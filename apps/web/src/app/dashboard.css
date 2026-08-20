@@ -1,0 +1,126 @@
+.dashboard-appointments {
+  display: grid;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.dashboard-appointments > article {
+  display: grid;
+  grid-template-columns: 74px 1.15fr 1fr;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 69px;
+  padding: 11px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+}
+.dashboard-appointments > article:hover {
+  background: var(--canvas);
+}
+.dashboard-appointments time strong,
+.dashboard-appointments time span,
+.dashboard-appointments div strong,
+.dashboard-appointments div span {
+  display: block;
+}
+.dashboard-appointments time strong {
+  font-size: 14px;
+  color: var(--brand);
+}
+.dashboard-appointments time span,
+.dashboard-appointments div span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 8px;
+}
+.dashboard-appointments div strong {
+  font-size: 10px;
+}
+.contact-details { position: relative; }
+.contact-details[open] { z-index: 50; }
+.contact-details summary {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 18px;
+  cursor: pointer;
+  list-style: none;
+}
+.contact-details summary::-webkit-details-marker { display: none; }
+.contact-details[open] summary { background: var(--brand); color: #fff; }
+.contact-details > div {
+  position: absolute;
+  z-index: 30;
+  top: 46px;
+  right: 0;
+  display: grid;
+  gap: 8px;
+  min-width: 230px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: 0 16px 38px rgba(27, 38, 49, .18);
+}
+.contact-details > div strong { font-size: 12px; }
+.contact-details > div a,
+.contact-details > div span { color: var(--ink); font-size: 12px; text-decoration: none; }
+.contact-details > div a:hover { color: var(--brand); }
+.dashboard-patient-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dashboard-appointments .dashboard-doctor-heading,
+.dashboard-appointments .dashboard-doctor-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.dashboard-appointments .dashboard-doctor-heading { white-space: nowrap; }
+.dashboard-appointments .dashboard-doctor-actions { flex: 0 0 auto; margin-top: 0; }
+.dashboard-doctor-actions > button,
+.dashboard-doctor-contact summary {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 14px;
+  cursor: pointer;
+}
+.dashboard-appointments .dashboard-patient-heading { display: flex; align-items: center; gap: 8px; }
+.dashboard-appointments .dashboard-patient-heading > strong,
+.dashboard-appointments .dashboard-doctor-heading > strong { flex: 0 1 auto; }
+.dashboard-doctor-actions > button:hover,
+.dashboard-doctor-contact summary:hover { background: var(--brand); color: #fff; }
+.dashboard-doctor-contact > div { top: 37px; right: 0; }
+.dashboard-patient-heading .contact-details summary {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.dashboard-patient-heading .contact-details > div {
+  top: 37px;
+  right: auto;
+  left: 0;
+}
+@media (max-width: 650px) {
+  .dashboard-appointments > article {
+    grid-template-columns: 65px 1fr;
+  }
+  .dashboard-appointments > article > div:last-of-type {
+    grid-column: 2;
+  }
+}

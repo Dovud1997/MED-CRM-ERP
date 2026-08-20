@@ -1,0 +1,1 @@
+import{NextRequest}from"next/server";import{clinicResponse}from"@/lib/server-api";export const dynamic="force-dynamic";export async function GET(r:NextRequest){return clinicResponse(r,"/inventory/assets")}export async function POST(r:NextRequest){return clinicResponse(r,"/inventory/assets",{method:"POST",body:await r.text()})}

@@ -1,0 +1,3 @@
+import { NextRequest,NextResponse } from 'next/server';
+const api=process.env.INTERNAL_API_URL??'http://api:4000/api/v1';
+export async function POST(request:NextRequest){const refresh=request.cookies.get('obk_refresh')?.value;if(refresh)await fetch(`${api}/auth/logout`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({refreshToken:refresh}),cache:'no-store'}).catch(()=>undefined);const response=NextResponse.json({success:true});response.cookies.set('obk_access','',{httpOnly:true,sameSite:'strict',path:'/',maxAge:0});response.cookies.set('obk_refresh','',{httpOnly:true,sameSite:'strict',path:'/api/session',maxAge:0});return response;}

@@ -1,0 +1,1 @@
+-- Existing provider assignments are preserved on rollback to avoid data loss.

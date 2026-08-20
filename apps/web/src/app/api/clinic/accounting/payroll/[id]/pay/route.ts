@@ -1,0 +1,1 @@
+import{NextRequest}from"next/server";import{clinicResponse}from"@/lib/server-api";export async function POST(r:NextRequest,{params}:{params:Promise<{id:string}>}){const{id}=await params;return clinicResponse(r,`/accounting/payroll/${id}/pay`,{method:"POST",headers:{"content-type":"application/json"},body:await r.text()})}

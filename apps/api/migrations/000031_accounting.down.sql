@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS payroll_accruals,payroll_rules,accounting_obligations,accounting_entries,accounting_categories;

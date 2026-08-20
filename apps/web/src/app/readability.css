@@ -1,0 +1,16 @@
+/* Единый читаемый масштаб внутренних экранов клиники. */
+.page :where(label,legend,small,time,p){font-size:12px!important;line-height:1.5}
+.page :where(input,select,textarea){font-size:14px!important;line-height:1.45}
+.page :where(.primary,.secondary,.danger-button,.text-button,.stock-in){font-size:13px!important}
+.page :where(.table-row,.table-head,.report-table-row,.report-status>div){font-size:12px!important;line-height:1.45}
+.page :where(.table-row strong,.report-table-row strong,.service-prices strong,.provider-picker strong,.specialist-doctors strong,.messenger aside strong,.archive-list header strong){font-size:13px!important}
+.page :where(.status-active,.system-badge,.movement-type,.live-badge,.lab-order-status,.urgent-label,.asset-status,.field-error){font-size:11px!important;line-height:1.35}
+.page :where(.service-main>span,.service-main small,.service-prices span,.provider-picker small,.specialty-picker span,.specialty-grid header span,.specialist-doctors span,.report-grid header span,.daily-bars small,.asset-list span,.count-card header span,.messenger aside small,.messenger main>header span,.message-thread time){font-size:12px!important;line-height:1.45}
+.page :where(.service-main h2,.report-grid h2,.panel h2){font-size:16px!important}
+.page :where(.service-main p,.report-empty,.empty-state p,.load-empty p,.panel-head p){font-size:12px!important;line-height:1.55}
+.page :where(.quick-grid button){font-size:12px!important;line-height:1.35}
+.page :where(.message-thread p,.archive-list p){font-size:14px!important;line-height:1.55}
+.page :where(.report-cards span,.report-status span,.report-status strong,.report-foot span,.report-foot b,.appointment-summary span){font-size:12px!important;line-height:1.45}
+.page :where(.inpatient-tabs button,.inpatient-tabs b,.room-grid header span,.bed span,.bed select,.booking-list span,.booking-list strong,.booking-list select,.patient-options button){font-size:12px!important;line-height:1.4}
+
+@media(max-width:760px){.page :where(label,legend,small,time,p){font-size:13px!important}.page :where(input,select,textarea){font-size:16px!important}}

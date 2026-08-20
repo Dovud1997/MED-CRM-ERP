@@ -1,0 +1,1 @@
+import { describe,expect,it } from 'vitest';import { messages } from './i18n';describe('translations',()=>{it('has the same keys for every locale',()=>{const keys=Object.keys(messages.ru);expect(Object.keys(messages.uz)).toEqual(keys);expect(Object.keys(messages.en)).toEqual(keys);});});

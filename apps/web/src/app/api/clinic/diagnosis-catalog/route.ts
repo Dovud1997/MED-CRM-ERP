@@ -1,0 +1,1 @@
+import{NextRequest}from"next/server";import{clinicResponse}from"@/lib/server-api";export async function GET(r:NextRequest){return clinicResponse(r,`/diagnosis-catalog${r.nextUrl.search}`)}export async function POST(r:NextRequest){return clinicResponse(r,"/diagnosis-catalog",{method:"POST",body:await r.text()})}

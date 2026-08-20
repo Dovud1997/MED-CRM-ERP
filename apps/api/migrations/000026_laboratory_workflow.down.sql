@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS laboratory_order_items,laboratory_orders,laboratory_test_catalog;

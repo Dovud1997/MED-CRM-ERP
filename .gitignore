@@ -1,0 +1,32 @@
+node_modules
+.next
+dist
+coverage
+.turbo
+.env
+!.env.example
+*.log
+apps/api/bin
+
+# Local caches / package stores
+.cache
+.cache-go
+.go-cache
+.gocache
+.tmp-go
+.pnpm-store
+
+# Nested clone / local mirror (not part of source tree)
+MED-CRM-ERP/
+
+# Temp / scrape artifacts
+**/.tmp*
+**/*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.swp
+*~
