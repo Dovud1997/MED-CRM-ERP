@@ -10,11 +10,11 @@ ONA VA BOLA KLINIKASI — API-first платформа управления ча
 flowchart LR
   Clients[Web / Tauri / Mobile / Telegram] --> Proxy[Nginx]
   Proxy --> Web[Next.js]
-  Proxy --> API[NestJS REST API]
+  Proxy --> API[Go REST API - chi + pgx]
   API --> DB[(PostgreSQL)]
   API --> Redis[(Redis)]
   API --> S3[(MinIO / S3)]
-  Worker[Background worker] --> DB
+  Worker[Background worker · планируется, этап 3] --> DB
   Worker --> Redis
   Worker --> S3
 ```
@@ -24,13 +24,13 @@ flowchart LR
 - `apps/web` — Next.js App Router, только presentation и API orchestration.
 - `apps/api` — Go HTTP API, авторизация, permission-based RBAC и бизнес-правила.
 - `apps/api/migrations` — версионированные PostgreSQL migrations.
-- будущий Go worker — Redis-backed фоновые задачи (этап 2).
-- `packages/shared` — framework-independent DTO/schema/permissions.
+- Go worker (Redis-backed фоновые задачи) — **планируется, этап 3; пока не реализовано**.
+- `packages/shared` (framework-independent DTO/schema/permissions) — **планируется; каталог `packages/` сейчас пуст**.
 - `infra` — Compose, Nginx и эксплуатационные файлы.
 
 ## Модульные границы
 
-Первый вертикальный срез: identity, staff, patients, appointments, audit. Следующие bounded contexts: encounters/EMR, billing, inventory, laboratory, notifications, files and reporting. Связи между контекстами проходят через идентификаторы и сервисные интерфейсы; контроллеры не обращаются к Prisma напрямую.
+Первый вертикальный срез: identity, staff, patients, appointments, audit. Следующие bounded contexts: encounters/EMR, billing, inventory, laboratory, notifications, files and reporting. Связи между контекстами проходят через идентификаторы и сервисные интерфейсы; HTTP-хендлеры не обращаются к PostgreSQL напрямую в обход слоя доступа (`pgx`).
 
 ## Tenancy и филиалы
 
@@ -41,7 +41,7 @@ flowchart LR
 - Prefix `/api/v1`, JSON, UTC timestamps ISO-8601.
 - OpenAPI доступен на `/api/docs` вне production или при явном включении.
 - Access token короткоживущий; refresh token ротируется и хранится только в виде SHA-256 hash.
-- Ошибки имеют стабильный HTTP status и NestJS JSON shape.
+- Ошибки имеют стабильный HTTP status и единый JSON-формат.
 - Pagination: `page`, `pageSize`; поиск нормализуется на сервере.
 
 ## Решения

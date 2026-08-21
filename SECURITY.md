@@ -7,15 +7,15 @@
 ## Контроли
 
 - TLS 1.2+ снаружи; приватная сеть между сервисами; шифрование дисков/backup на инфраструктурном уровне.
-- Argon2id для паролей. JWT access 15 минут, ротация refresh token, server-side revoke, generic login errors.
-- Deny-by-default RBAC: `OWNER`, `ADMIN`, `DOCTOR`, `RECEPTIONIST`, `NURSE`, `ACCOUNTANT`.
+- Argon2id для паролей. JWT access 15 минут, refresh 30 дней с ротацией, server-side revoke, generic login errors. TTL сейчас захардкожены в `internal/app/config.go` (env-переменные `ACCESS_TOKEN_TTL` / `REFRESH_TOKEN_TTL_DAYS` из `.env` пока не читаются — TODO).
+- Deny-by-default RBAC на основе scoped-пермишенов (`branches:read`, `patients:read/write`, `clinical:read/write`, `appointments:read/write`, `finance:read/write`, `employees:read`, `roles:read`). Системные роли из seed: `OWNER` (wildcard `*`), врачи `DOCTOR_SURGEON` / `DOCTOR_DENTIST` / `DOCTOR_PEDIATRICIAN` / `DOCTOR_ULTRASOUND` / `DOCTOR_GYNECOLOGIST`, `SPEECH_THERAPIST`, `ACCOUNTANT`, `MANAGER`, `CASHIER`, `RECEPTIONIST`. Роли настраиваются на уровне организации.
 - Tenant scope обязателен в каждом repository query. Идентификатор организации не принимается из body клиента.
 - Audit события append-only: actor, action, entity, time, IP и correlation metadata без клинического содержимого.
 - PII не пишется в application logs. Секреты поступают только через environment/secret manager.
 - Паспортные данные, постоянный адрес и телефон сотрудников хранятся в PostgreSQL в зашифрованных полях `pgcrypto` и не возвращаются общим списком сотрудников. Публичные рабочие контакты (email и Telegram) отделены от приватного профиля.
 - Телефон, паспорт, адрес и контакт опекуна пациента шифруются на уровне полей. Для предотвращения дублей используется необратимый хеш нормализованного телефона; общая выдача пациентов не содержит расшифрованных контактов.
 - S3 buckets private; presigned URLs короткоживущие; upload проходит type/size validation и malware scan.
-- Rate limiting, security headers, строгая CORS allowlist, input validation и параметризованные Prisma queries.
+- Rate limiting, security headers, строгая CORS allowlist, input validation и параметризованные `pgx` queries.
 
 ## Эксплуатация
 

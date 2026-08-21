@@ -1,0 +1,29 @@
+{
+  "kits": {
+    "engineer": {
+      "version": "local",
+      "installedAt": "2026-08-20T19:01:07.043Z",
+      "files": [
+        {
+          "path": "rules/quality-gates.md",
+          "checksum": "a5e2ab11313e5756d1b247591b2de4aee1dae9931c6627dc4e66cb595367765e",
+          "ownership": "user",
+          "installedVersion": "local",
+          "installedAt": "2026-08-20T19:01:07.041Z"
+        }
+      ]
+    }
+  },
+  "scope": "local",
+  "name": "ClaudeKit Engineer",
+  "version": "local",
+  "installedAt": "2026-08-20T19:01:07.043Z",
+  "userConfigFiles": [
+    ".gitignore",
+    ".repomixignore",
+    ".mcp.json",
+    ".ckignore",
+    ".ck.json",
+    "CLAUDE.md"
+  ]
+}
